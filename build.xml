@@ -1,0 +1,27 @@
+<project name="3d-engine" default="build" basedir=".">
+
+    <target name="create_classes_dir">
+        <mkdir dir="build/classes"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="build/classes"/>
+        <delete file="build/3d-engine.jar"/>
+    </target>
+
+    <target name="compile" depends="clean,create_classes_dir">
+        <javac destdir="build/classes">
+            <!--compilerarg value="-Xlint:unchecked"/-->
+            <src path="src"/>
+        </javac>
+    </target>
+
+
+    <target name="build" depends="compile">
+        <jar basedir="build/classes"
+             jarfile="build/3d-engine.jar"
+             manifest="META-INF/MANIFEST.MF"
+             includes="**/*.*"/>
+    </target>
+
+</project>
